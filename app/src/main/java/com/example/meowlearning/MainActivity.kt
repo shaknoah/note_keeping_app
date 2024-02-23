@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,10 +43,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(modifier: Modifier) {
     var showDialogueBox by remember { mutableStateOf(false) }
-    var notes by remember { mutableStateOf(listOf<Note>()) }
-    var title by remember { mutableStateOf("") }
-    var content by remember { mutableStateOf("") }
-    var editingNoteId by remember { mutableStateOf(-1) }
+    var notes by rememberSaveable { mutableStateOf(listOf<Note>()) }
+    var title by rememberSaveable { mutableStateOf("") }
+    var content by rememberSaveable { mutableStateOf("") }
+    var editingNoteId by rememberSaveable { mutableStateOf(-1) }
 
     Column(
         modifier = Modifier
@@ -55,10 +56,10 @@ fun Greeting(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(modifier = Modifier
-                .padding(bottom = 30.dp)
+            .padding(bottom = 30.dp)
             .padding(top = 16.dp)
 
-                .padding(vertical = 12.dp, horizontal = 24.dp),
+            .padding(vertical = 12.dp, horizontal = 24.dp),
             onClick = {
                 //your onclick code
                 showDialogueBox = true
